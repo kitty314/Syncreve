@@ -3,6 +3,8 @@ name: Flutter build apk
 on:
   workflow_dispatch:
   push:
+    paths-ignore:
+      - .github/**
     branches:
       - main
     tags:
@@ -49,8 +51,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: artifact
-          path: bin/
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
 
       - name: Display structure of downloaded files
         run: ls -R
